@@ -13,7 +13,7 @@ const AvailableAppointments = ({ date }) => {
     }, [])
     return (
         <div className='py-20'>
-            <h2 className='text-center text-secondary text-2xl py-10'>Available Appointments On {format(date, 'PP')}</h2>
+            <h2 className='text-center text-secondary text-2xl py-10'>Available Appointments On {format(date || new Date(), 'PP')}</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     services.map(service => <Service key={service._id} service={service} setTreatment={setTreatment}></Service>)
