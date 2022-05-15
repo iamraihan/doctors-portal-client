@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
@@ -21,9 +21,11 @@ const SignUp = () => {
     console.log(user);
 
     const token = useToken(gUser || user || updateProfile)
-    if (token) {
-        navigate('/appointment')
-    }
+
+
+
+
+
 
 
     if (loading || gLoading || updating) {
@@ -32,6 +34,9 @@ const SignUp = () => {
     let signError;
     if (error || gUser) {
         signError = <p className='text-red-500'> <small>{error?.message || gError?.message || updateError?.message}</small> </p>
+    }
+    if (token) {
+        navigate('/appointment')
     }
 
     const onSubmit = async data => {
